@@ -185,86 +185,7 @@
         </div>
       </div>
 
-      <!-- Sidebar -->
-      <div id="sidebar">
-        <div class="inner">
-          <!-- Menu -->
-          <nav id="menu">
-            <header class="major">
-              <h2>The House</h2>
-            </header>
-            <ul>
-              <li><a href="index.html">Location</a></li>
-              <li>
-                <span class="opener">Rooms</span>
-                <ul>
-                  <li><a href="#">Kitchenr</a></li>
-                  <li><a href="#">Dining</a></li>
-                  <li><a href="#">TV</a></li>
-                  <li><a href="#">Basement</a></li>
-                </ul>
-              </li>
-              <li>
-                <span class="opener">Bedrooms</span>
-                <ul>
-                  <li><a href="#">Master</a></li>
-                  <li><a href="#">Other</a></li>
-                  <li><a href="#">Another</a></li>
-                  <li><a href="#">Basements</a></li>
-                </ul>
-              </li>
-              <li>
-                <span class="opener">Outside</span>
-                <ul>
-                  <li><a href="#">Front yard</a></li>
-                  <li><a href="#">Back yard</a></li>
-                  <li><a href="#">Garage</a></li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
-
-          <!-- Section -->
-          <section>
-            <header class="major">
-              <h2>Sale Info</h2>
-            </header>
-            <div class="mini-posts">
-              <article>
-                <ul>
-                  <li>Available March 1, 2021.</li>
-                  <li>Great offers will be accepted early!</li>
-                  <li>Move in dates flexible.</li>
-                  <li><a href="https://1drv.ms/x/s!Amx7wPbAnyWIkrhSgQcGvqujQnqIaw?e=XCp4GX" target="_new">All furnishings available for sale </a> (can be separate from house).</li>
-              </ul>
-                </article>
-          </section>
-
-          <!-- Section -->
-          <section>
-            <header class="major">
-              <h2>Get In Touch</h2>
-            </header>
-            <p>
-              Questions about the house or neighbourhood? We're here to help!
-            </p>
-            <ul class="contact">
-              <li class="icon solid fa-envelope">
-                <a href="mailto:1317prestone@gmail.com"
-                  >1317prestone@gmail.com</a
-                >
-                <li class="icon solid fa-phone">(613) 837-8200</li>
-                <li class="icon solid fa-home">1317 Prestone Dr, Orleans, ON, K1E 2Z2<br> 
-              </li>
-            </ul>
-          </section>
-
-          <!-- Footer -->
-          <footer id="footer">
-            <p class="copyright">Design: <a href="https://html5up.net/editorial">Editorial</a> by <a href="https://html5up.net">HTML5 UP</a>.</p>
-          </footer>
-        </div>
-      </div>
+      <ui-include src="https://www.1317prestone.ca/sidebar.html"><ui-include>
     </div>
 
     <!-- Scripts -->
@@ -273,5 +194,14 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+      customElements.define('ui-include', class extends HTMLElement {
+  async connectedCallback() {
+    let src = this.getAttribute('src');
+    this.innerHTML = await (await fetch(src)).text();;
+  }
+})
+    </script>
   </body>
 </html>
